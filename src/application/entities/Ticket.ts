@@ -31,7 +31,7 @@ export class Ticket {
     this.customer = input.customer
   }
 
-  public getTicketId(): string | undefined {
+  public getTicketId(): string {
     return this.ticketId
   }
 
