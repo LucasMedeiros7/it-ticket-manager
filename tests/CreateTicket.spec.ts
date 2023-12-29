@@ -1,12 +1,12 @@
 import { describe, expect, it, beforeEach } from 'vitest'
-import { Input } from '../src/application/entities/Ticket'
 import { CreateTicket } from '../src/application/usecases/CreateTicket'
 import { FakeTicketRepository } from '../src/infra/repositories/FakeTicketRepository'
+import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
 
 describe('Create Ticket Use Case', () => {
   let fakeRepository: FakeTicketRepository
   let createTicket: CreateTicket
-  let input: Input
+  let input: CreateTicketDTO
 
   beforeEach(() => {
     fakeRepository = new FakeTicketRepository()
@@ -24,19 +24,19 @@ describe('Create Ticket Use Case', () => {
   it('should be able to create a ticket and save it in the database', async () => {
     const output = await createTicket.execute(input)
     const savedTicket = await fakeRepository.listAll()
-    expect(savedTicket[0].ticketId).toBe(output.ticketId)
+    expect(savedTicket[0].getTicketId()).toBe(output.getTicketId())
   })
 
   it('should assign the ticket to the specified agent', async () => {
     await createTicket.execute(input)
     const savedTicket = await fakeRepository.listAll()
-    expect(savedTicket[0].assignedAgent).toBe(input.assignedAgent)
+    expect(savedTicket[0].getAssignedAgent()).toBe(input.assignedAgent)
   })
 
   it('should set the default status to "Pending" for a new ticket', async () => {
     await createTicket.execute(input)
     const savedTicket = await fakeRepository.listAll()
-    expect(savedTicket[0].status).toBe('Pending')
+    expect(savedTicket[0].getStatus()).toBe('Pending')
   })
 
   it('should not allow creating a ticket without a subject', async () => {
