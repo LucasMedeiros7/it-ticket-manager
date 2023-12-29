@@ -1,5 +1,5 @@
-import { Ticket } from '../entities/Ticket'
-import { TicketRepository } from '../repositories/TicketRepository'
+import { Ticket } from '../../domain/entities/Ticket'
+import { TicketRepository } from '../../domain/repositories/TicketRepository'
 
 export class AssignAgent {
   constructor(private repository: TicketRepository) {}

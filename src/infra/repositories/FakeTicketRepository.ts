@@ -1,5 +1,5 @@
-import { Ticket } from '../../application/entities/Ticket'
-import { TicketRepository } from '../../application/repositories/TicketRepository'
+import { Ticket } from '../../domain/entities/Ticket'
+import { TicketRepository } from '../../domain/repositories/TicketRepository'
 
 export class FakeTicketRepository implements TicketRepository {
   private tickets: Ticket[] = []
@@ -14,14 +14,6 @@ export class FakeTicketRepository implements TicketRepository {
 
   async listById(id: string): Promise<Ticket | undefined> {
     return this.tickets.find((ticket) => ticket.getTicketId() === id)
-    /* 
-      for (let i = 0; i < this.tickets.length; i++) {
-        const ticketId = this.tickets[i].getTicketId()
-        if (ticketId === id) {
-          return this.tickets[i]
-        }
-      } 
-     */
   }
 
   async updateAssignedAgent(updatedTicket: Ticket): Promise<void> {

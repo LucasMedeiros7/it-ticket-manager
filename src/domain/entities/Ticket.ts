@@ -1,11 +1,11 @@
 import { randomUUID } from 'crypto'
-import { CreateTicketDTO } from '../dtos/CreateTicketDTO'
+import { CreateTicketDTO } from '../../application/dtos/CreateTicketDTO'
 
 type Status = 'Pending' | 'Done'
 type Priority = 'Low' | 'Medium' | 'High'
 
 export class Ticket {
-  private ticketId?: string
+  private ticketId: string
   private subject: string
   private description: string
   private createdDate: Date

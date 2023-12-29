@@ -1,6 +1,6 @@
 import { CreateTicketDTO } from '../dtos/CreateTicketDTO'
-import { Ticket } from '../entities/Ticket'
-import { TicketRepository } from '../repositories/TicketRepository'
+import { TicketRepository } from '../../domain/repositories/TicketRepository'
+import { Ticket } from '../../domain/entities/Ticket'
 
 export class CreateTicket {
   constructor(private repository: TicketRepository) {}
