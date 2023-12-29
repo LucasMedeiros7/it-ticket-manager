@@ -4,9 +4,10 @@ import { FakeTicketRepository } from '../src/infra/repositories/FakeTicketReposi
 import { ListTicketById } from '../src/application/usecases/ListTicketById'
 import { AssignAgent } from '../src/application/usecases/AssignAgent'
 import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
+import { TicketRepository } from '../src/application/repositories/TicketRepository'
 
 describe('Assign Agent', () => {
-  let fakeRepository: FakeTicketRepository
+  let fakeRepository: TicketRepository
 
   let createTicket: CreateTicket
   let listTicketById: ListTicketById
@@ -36,5 +37,6 @@ describe('Assign Agent', () => {
     const output = await listTicketById.execute(ticket.getTicketId())
 
     expect(output.getAssignedAgent()).toBe('Anderson Gonhi')
+    expect(output.getTicketId()).toBe(ticket.getTicketId())
   })
 })

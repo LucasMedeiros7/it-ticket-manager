@@ -6,6 +6,6 @@ export class AssignAgent {
 
   async execute(ticket: Ticket, agentName: string) {
     ticket.setAssignedAgent(agentName)
-    await this.repository.update(ticket)
+    await this.repository.updateAssignedAgent(ticket)
   }
 }

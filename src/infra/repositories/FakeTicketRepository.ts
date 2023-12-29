@@ -24,11 +24,15 @@ export class FakeTicketRepository implements TicketRepository {
      */
   }
 
-  async update(updatedTicket: Ticket): Promise<void> {
-    const tickets = this.tickets.filter(
-      (ticket) => ticket.getTicketId() !== updatedTicket.getTicketId(),
+  async updateAssignedAgent(updatedTicket: Ticket): Promise<void> {
+    const ticket = this.tickets.find(
+      (t) => t.getTicketId() === updatedTicket.getTicketId(),
     )
-    tickets.push(updatedTicket)
-    this.tickets = tickets
+    if (!ticket) {
+      throw new Error(
+        `Ticket with ID ${updatedTicket.getTicketId()} does not exist`,
+      )
+    }
+    ticket.setAssignedAgent(updatedTicket.getAssignedAgent())
   }
 }
