@@ -1,19 +1,13 @@
+/* eslint-disable no-use-before-define */
 import { randomUUID } from 'crypto'
 
 type Status = 'Pending' | 'Done'
 type Priority = 'Low' | 'Medium' | 'High'
 
-export type CreateTicketDTO = {
-  ticketId?: string
-  subject: string
-  description: string
-  priority: Priority
-  assignedAgent?: string
-  customer: string
-}
+export type Input = Omit<Ticket, 'createdDate' | 'status'>
 
 export class Ticket {
-  readonly ticketId: string
+  readonly ticketId?: string
   readonly subject: string
   readonly description: string
   readonly createdDate: Date
@@ -22,7 +16,7 @@ export class Ticket {
   readonly priority: Priority
   readonly assignedAgent?: string
 
-  constructor(input: CreateTicketDTO) {
+  constructor(input: Input) {
     if (!this.isValidSubject(input.subject)) {
       throw new Error(
         'The maximum length for a Subject is 35 and minimum must be more than 0',
@@ -39,22 +33,7 @@ export class Ticket {
     this.customer = input.customer
   }
 
-  public toJson(): Omit<Ticket, 'toJson'> {
-    return {
-      ticketId: this.ticketId,
-      subject: this.subject,
-      description: this.description,
-      status: this.status,
-      priority: this.priority,
-      createdDate: this.createdDate,
-      assignedAgent: this.assignedAgent,
-      customer: this.customer,
-    }
-  }
-
   private isValidSubject(subject: string): boolean {
-    console.log(subject)
-
     return subject.length > 0 && subject.length <= 35
   }
 }

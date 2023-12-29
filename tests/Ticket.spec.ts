@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { CreateTicketDTO, Ticket } from '../src/application/entities/Ticket'
+import { Input, Ticket } from '../src/application/entities/Ticket'
 
-describe.skip('Create Ticket', () => {
-  const payload: CreateTicketDTO = {
+describe('Create Ticket', () => {
+  const payload: Input = {
     subject: 'Issue in the staging environment',
     description:
       "I can't access the staging environment with the account I'm using to access the AWS console!",
@@ -25,7 +25,7 @@ describe.skip('Create Ticket', () => {
   })
 
   it('Should throw an error if the subject exceeds the maximum length', () => {
-    const payloadWithLongSubject: CreateTicketDTO = {
+    const payloadWithLongSubject: Input = {
       ...payload,
       subject:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

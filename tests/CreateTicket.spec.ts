@@ -1,12 +1,12 @@
 import { describe, expect, it, beforeEach } from 'vitest'
-import { CreateTicketDTO } from '../src/application/entities/Ticket'
+import { Input } from '../src/application/entities/Ticket'
 import { CreateTicket } from '../src/application/usecases/CreateTicket'
 import { FakeTicketRepository } from '../src/infra/repositories/FakeTicketRepository'
 
 describe('Create Ticket Use Case', () => {
   let fakeRepository: FakeTicketRepository
   let createTicket: CreateTicket
-  let input: CreateTicketDTO
+  let input: Input
 
   beforeEach(() => {
     fakeRepository = new FakeTicketRepository()

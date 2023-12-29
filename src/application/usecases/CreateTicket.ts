@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-constructor */
-import { CreateTicketDTO, Ticket } from '../entities/Ticket'
+import { Input as CreateTicketDTO, Ticket } from '../entities/Ticket'
 import { TicketRepository } from '../repositories/TicketRepository'
 
 export class CreateTicket {
