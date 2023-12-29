@@ -30,13 +30,28 @@ describe('Assign Agent', () => {
     }
   })
 
-  it('Deve ser possivel atribuir um Ticket a um Agent', async () => {
+  it('Should be able to assign an Agent to a Ticket', async () => {
     const ticket = await createTicket.execute(input)
 
     assignAgent.execute(ticket, 'Anderson Gonhi')
-    const output = await listTicketById.execute(ticket.getTicketId())
 
-    expect(output.getAssignedAgent()).toBe('Anderson Gonhi')
-    expect(output.getTicketId()).toBe(ticket.getTicketId())
+    const updatedTicket = await listTicketById.execute(ticket.getTicketId())
+
+    expect(updatedTicket.getAssignedAgent()).toBe('Anderson Gonhi')
+    expect(updatedTicket.getTicketId()).toBe(ticket.getTicketId())
+  })
+
+  it('Should be able to change the Agent of a Ticket', async () => {
+    const ticket = await createTicket.execute({
+      ...input,
+      assignedAgent: 'Anderson Gonhi',
+    })
+
+    assignAgent.execute(ticket, 'Jonh Doe')
+
+    const updatedTicket = await listTicketById.execute(ticket.getTicketId())
+
+    expect(updatedTicket.getAssignedAgent()).toBe('Jonh Doe')
+    expect(updatedTicket.getTicketId()).toBe(ticket.getTicketId())
   })
 })
