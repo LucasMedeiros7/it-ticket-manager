@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { Input, Ticket } from '../src/application/entities/Ticket'
+import { Ticket } from '../src/application/entities/Ticket'
+import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
 
 describe('Create Ticket', () => {
-  const payload: Input = {
+  const payload: CreateTicketDTO = {
     subject: 'Issue in the staging environment',
     description:
       "I can't access the staging environment with the account I'm using to access the AWS console!",
@@ -14,18 +15,18 @@ describe('Create Ticket', () => {
   it('Should be able to create a Ticket', () => {
     const ticket = new Ticket(payload)
     expect(ticket).toBeDefined()
-    expect(ticket.ticketId).toBeDefined()
-    expect(ticket.subject).toEqual(payload.subject)
-    expect(ticket.description).toEqual(payload.description)
-    expect(ticket.priority).toEqual(payload.priority)
-    expect(ticket.status).toEqual('Pending')
-    expect(ticket.createdDate).toBeInstanceOf(Date)
-    expect(ticket.assignedAgent).toEqual(payload.assignedAgent)
-    expect(ticket.customer).toEqual(payload.customer)
+    expect(ticket.getTicketId()).toBeDefined()
+    expect(ticket.getSubject()).toEqual(payload.subject)
+    expect(ticket.getDescription()).toEqual(payload.description)
+    expect(ticket.getPriority()).toEqual(payload.priority)
+    expect(ticket.getStatus()).toEqual('Pending')
+    expect(ticket.getCreatedDate()).toBeInstanceOf(Date)
+    expect(ticket.getAssignedAgent()).toEqual(payload.assignedAgent)
+    expect(ticket.getCustomer()).toEqual(payload.customer)
   })
 
   it('Should throw an error if the subject exceeds the maximum length', () => {
-    const payloadWithLongSubject: Input = {
+    const payloadWithLongSubject: CreateTicketDTO = {
       ...payload,
       subject:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

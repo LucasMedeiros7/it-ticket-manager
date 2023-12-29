@@ -1,22 +1,20 @@
-/* eslint-disable no-use-before-define */
 import { randomUUID } from 'crypto'
+import { CreateTicketDTO } from '../dtos/CreateTicketDTO'
 
 type Status = 'Pending' | 'Done'
 type Priority = 'Low' | 'Medium' | 'High'
 
-export type Input = Omit<Ticket, 'createdDate' | 'status'>
-
 export class Ticket {
-  readonly ticketId?: string
-  readonly subject: string
-  readonly description: string
-  readonly createdDate: Date
-  readonly customer: string
-  readonly status: Status
-  readonly priority: Priority
-  readonly assignedAgent?: string
+  private ticketId?: string
+  private subject: string
+  private description: string
+  private createdDate: Date
+  private customer: string
+  private status: Status
+  private priority: Priority
+  private assignedAgent?: string
 
-  constructor(input: Input) {
+  constructor(input: CreateTicketDTO) {
     if (!this.isValidSubject(input.subject)) {
       throw new Error(
         'The maximum length for a Subject is 35 and minimum must be more than 0',
@@ -31,6 +29,42 @@ export class Ticket {
     this.createdDate = new Date()
     this.assignedAgent = input.assignedAgent
     this.customer = input.customer
+  }
+
+  public getTicketId(): string | undefined {
+    return this.ticketId
+  }
+
+  public getSubject(): string {
+    return this.subject
+  }
+
+  public getDescription(): string {
+    return this.description
+  }
+
+  public getCreatedDate(): Date {
+    return this.createdDate
+  }
+
+  public getCustomer(): string {
+    return this.customer
+  }
+
+  public getStatus(): Status {
+    return this.status
+  }
+
+  public getPriority(): Priority {
+    return this.priority
+  }
+
+  public getAssignedAgent(): string | undefined {
+    return this.assignedAgent
+  }
+
+  public setAssignedAgent(agentName: string) {
+    this.assignedAgent = agentName
   }
 
   private isValidSubject(subject: string): boolean {
