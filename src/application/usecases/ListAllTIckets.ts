@@ -1,6 +1,6 @@
 import { Ticket } from '../../domain/entities/Ticket'
-import { TicketRepository } from '../../domain/repositories/TicketRepository'
-import { UseCase } from './UseCase'
+import { TicketRepository } from '../../domain/repositories/TicketRepository.interface'
+import { UseCase } from './UseCase.interface'
 
 export class ListAllTickets implements UseCase {
   constructor(private repository: TicketRepository) {}

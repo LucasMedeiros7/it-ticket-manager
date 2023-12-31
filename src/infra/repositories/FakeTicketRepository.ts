@@ -1,5 +1,5 @@
 import { Ticket } from '../../domain/entities/Ticket'
-import { TicketRepository } from '../../domain/repositories/TicketRepository'
+import { TicketRepository } from '../../domain/repositories/TicketRepository.interface'
 
 export class FakeTicketRepository implements TicketRepository {
   private tickets: Ticket[] = []

@@ -3,7 +3,7 @@ import { CreateTicket } from './application/usecases/CreateTicket'
 import { ListAllTickets } from './application/usecases/ListAllTIckets'
 import { ListTicketById } from './application/usecases/ListTicketById'
 
-import { TicketRepository } from './domain/repositories/TicketRepository'
+import { TicketRepository } from './domain/repositories/TicketRepository.interface'
 
 export class TicketUseCasesFactory {
   private _assignAgent: AssignAgent

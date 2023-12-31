@@ -1,7 +1,7 @@
 import { CreateTicketDTO } from '../dtos/CreateTicketDTO'
-import { TicketRepository } from '../../domain/repositories/TicketRepository'
+import { TicketRepository } from '../../domain/repositories/TicketRepository.interface'
 import { Ticket } from '../../domain/entities/Ticket'
-import { UseCase } from './UseCase'
+import { UseCase } from './UseCase.interface'
 
 export class CreateTicket implements UseCase {
   constructor(private repository: TicketRepository) {}

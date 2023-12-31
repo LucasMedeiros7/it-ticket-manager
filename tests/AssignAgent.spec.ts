@@ -4,7 +4,7 @@ import { FakeTicketRepository } from '../src/infra/repositories/FakeTicketReposi
 import { ListTicketById } from '../src/application/usecases/ListTicketById'
 import { AssignAgent } from '../src/application/usecases/AssignAgent'
 import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
-import { TicketRepository } from '../src/domain/repositories/TicketRepository'
+import { TicketRepository } from '../src/domain/repositories/TicketRepository.interface'
 
 describe('Assign Agent', () => {
   let fakeRepository: TicketRepository
