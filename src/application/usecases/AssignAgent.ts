@@ -1,7 +1,8 @@
 import { Ticket } from '../../domain/entities/Ticket'
-import { TicketRepository } from '../../domain/repositories/TicketRepository'
+import { TicketRepository } from '../../domain/repositories/TicketRepository.interface'
+import { UseCase } from './UseCase.interface'
 
-export class AssignAgent {
+export class AssignAgent implements UseCase {
   constructor(private repository: TicketRepository) {}
 
   async execute(ticket: Ticket, agentName: string) {
