@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { CreateTicket } from '../src/application/usecases/CreateTicket'
 import { FakeTicketRepository } from '../src/infra/repositories/FakeTicketRepository'
-import { ListTicketById } from '../src/application/usecases/ListTicketById'
-import { AssignAgent } from '../src/application/usecases/AssignAgent'
 import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
 import { TicketRepository } from '../src/domain/repositories/TicketRepository.interface'
+import { CreateTicket } from '../src/application/usecases/tickets/CreateTicket'
+import { ListTicketById } from '../src/application/usecases/tickets/ListTicketById'
+import { AssignAgent } from '../src/application/usecases/tickets/AssignAgent'
 
 describe('Assign Agent', () => {
   let fakeRepository: TicketRepository

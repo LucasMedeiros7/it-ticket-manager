@@ -2,29 +2,26 @@ import { Ticket } from '../../domain/entities/Ticket'
 import { TicketRepository } from '../../domain/repositories/TicketRepository.interface'
 
 export class FakeTicketRepository implements TicketRepository {
-  private tickets: Ticket[] = []
+  private db: Ticket[] = []
 
   async save(ticket: Ticket): Promise<void> {
-    this.tickets.push(ticket)
+    this.db.push(ticket)
   }
 
   async listAll(): Promise<Ticket[]> {
-    return this.tickets
+    return this.db
   }
 
   async listById(id: string): Promise<Ticket | undefined> {
-    return this.tickets.find((ticket) => ticket.getTicketId() === id)
+    return this.db.find((ticket) => ticket.getTicketId() === id)
   }
 
-  async updateAssignedAgent(updatedTicket: Ticket): Promise<void> {
-    const ticket = this.tickets.find(
-      (t) => t.getTicketId() === updatedTicket.getTicketId(),
-    )
-    if (!ticket) {
-      throw new Error(
-        `Ticket with ID ${updatedTicket.getTicketId()} does not exist`,
-      )
+  async updateTicket(updatedTicket: Ticket): Promise<void> {
+    const ticketId = updatedTicket.getTicketId()
+    const tickets = this.db.filter((t) => t.getTicketId() !== ticketId)
+    if (tickets.length === this.db.length) {
+      throw new Error(`Ticket with ID ${ticketId} does not exist`)
     }
-    ticket.setAssignedAgent(updatedTicket.getAssignedAgent())
+    this.db = [...tickets, updatedTicket]
   }
 }
