@@ -1,10 +1,10 @@
-import { AssignAgent } from './application/usecases/tickets/AssignAgent'
-import { CloseTicket } from './application/usecases/tickets/CloseTicket'
-import { CreateTicket } from './application/usecases/tickets/CreateTicket'
-import { ListAllTickets } from './application/usecases/tickets/ListAllTIckets'
-import { ListTicketById } from './application/usecases/tickets/ListTicketById'
+import { AssignAgent } from '../application/usecases/tickets/AssignAgent'
+import { CloseTicket } from '../application/usecases/tickets/CloseTicket'
+import { CreateTicket } from '../application/usecases/tickets/CreateTicket'
+import { ListAllTickets } from '../application/usecases/tickets/ListAllTIckets'
+import { ListTicketById } from '../application/usecases/tickets/ListTicketById'
 
-import { TicketRepository } from './domain/repositories/TicketRepository.interface'
+import { TicketRepository } from '../domain/repositories/TicketRepository.interface'
 
 export class TicketUseCasesFactory {
   private _assignAgent: AssignAgent

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/main.js",
+    "start": "tsc && node dist/server.js",
     "lint": "eslint . --ext .ts",
-    "test": "vitest"
+    "test:unit": "vitest --dir tests/usecases/.",
+    "test:api": "vitest --dir tests/api/."
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,9 @@
     "@rocketseat/eslint-config": "^2.1.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.10.5",
+    "@types/supertest": "^6.0.2",
     "eslint": "^8.56.0",
+    "supertest": "^6.3.3",
     "typescript": "^5.3.3",
     "vitest": "^1.0.0"
   },

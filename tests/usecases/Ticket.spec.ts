@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
-import { Ticket } from '../src/domain/entities/Ticket'
+import { CreateTicketDTO } from '../../src/application/dtos/CreateTicketDTO'
+import { Ticket } from '../../src/domain/entities/Ticket'
 
 describe('Create Ticket', () => {
   const payload: CreateTicketDTO = {

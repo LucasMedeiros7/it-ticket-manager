@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeEach } from 'vitest'
-import { CreateTicketDTO } from '../src/application/dtos/CreateTicketDTO'
-import { CreateTicket } from '../src/application/usecases/tickets/CreateTicket'
-import { TicketRepository } from '../src/domain/repositories/TicketRepository.interface'
-import { FakeTicketRepository } from '../src/infra/repositories/FakeTicketRepository'
+import { CreateTicketDTO } from '../../src/application/dtos/CreateTicketDTO'
+import { CreateTicket } from '../../src/application/usecases/tickets/CreateTicket'
+import { TicketRepository } from '../../src/domain/repositories/TicketRepository.interface'
+import { FakeTicketRepository } from '../../src/infra/repositories/FakeTicketRepository'
 
 describe('Create Ticket Use Case', () => {
   let fakeRepository: TicketRepository
