@@ -31,6 +31,10 @@ export class Ticket {
     this.customer = input.customer
   }
 
+  private isValidSubject(subject: string): boolean {
+    return subject.length > 0 && subject.length <= 35
+  }
+
   public getTicketId(): string {
     return this.ticketId
   }
@@ -67,7 +71,11 @@ export class Ticket {
     this.assignedAgent = agentName
   }
 
-  private isValidSubject(subject: string): boolean {
-    return subject.length > 0 && subject.length <= 35
+  public close() {
+    this.status = 'Done'
   }
+
+  // public open() {
+  //   this.status = 'Pending'
+  // }
 }
